@@ -27,11 +27,11 @@ const PageContainer = styled.div`
 
 const Titulo = styled.h1`
   width: 180px;
-  height: 86.23px;
+  height: 86px;
   font-family: "Playball", cursive;
   font-style: normal;
   font-weight: 400;
-  font-size: 68.982px;
+  font-size: 68px;
   line-height: 86px;
   text-align: center;
   color: #126ba5;
