@@ -1,42 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import { IonIcon } from "@ionic/react";
-import { checkmark } from "ionicons/icons";
 
 
-
-
-function Hoje(){
-    return(
+function Historico(){
+    return (
         <Conteiner>
         <Header>
-          <Titulo>TrackIt</Titulo>
-          <IconUser
-            src="https://64.media.tumblr.com/6566e1dfdd380b1e1bea4d7da2e38821/fc1cee0b79687753-8d/s1280x1920/84bad96a2f5b8feeb3254f17413aadf5b334e11d.jpg"
-            alt=""
-          />
-        </Header>
-        <TituloHoje>Segunda, 17/05</TituloHoje>
-        <SubTitulo>Nenhum hábito concluído ainda</SubTitulo>
-
-        <ConteinterInfos>
-        <InfosHabito>
-            <TituloHabito>Ler 1 capítulo de livro </TituloHabito>
-            <InfoHabitoAtual>Sequência atual: 3 dias</InfoHabitoAtual>
-            <InfoRecord>recorde: 5 dias </InfoRecord>
-            <Botao><StyledIcon icon={checkmark} /></Botao>
-        </InfosHabito>
-        </ConteinterInfos>
-        <FooterHabitos> 
+        <Titulo>TrackIt</Titulo>
+        <IconUser
+          src="https://64.media.tumblr.com/6566e1dfdd380b1e1bea4d7da2e38821/fc1cee0b79687753-8d/s1280x1920/84bad96a2f5b8feeb3254f17413aadf5b334e11d.jpg"
+          alt=""
+        />
+      </Header>
+      <TituloHoje>Histórico</TituloHoje>
+        <SubTitulo>Em breve você poderá ver o histórico dos seus hábitos aqui!</SubTitulo>
+         <FooterHabitos>
         <BotaoHabitos>Hábitos</BotaoHabitos>
         <BotaoHoje>Hoje</BotaoHoje>
         <BotaoHistorico>Histórico</BotaoHistorico>
       </FooterHabitos>
       </Conteiner>
-
     )
 }
-
 
 const Conteiner = styled.div`
      width: 100%;
@@ -96,76 +81,6 @@ line-height: 22px;
 color: #BABABA;
 margin: 28px 0 0 18px;
 `
-const InfosHabito = styled.div`
-width: 340px;
-height: 94px;
-background: #FFFFFF;
-border-radius: 5px;
-position: relative;
-
-`
-const TituloHabito = styled.h4`
-    width: 208px;
-height: 25px;
-left: 33px;
-top: 190px;
-font-family: "Lexend Deca", sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 19px;
-line-height: 25px;
-color: #666666;
-margin: 18px 0 0 18px;
-
-`
-
-const InfoHabitoAtual = styled.p`
-   width: 146px;
-font-family: "Lexend Deca", sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 12.976px;
-line-height: 16px;
-color: #666666;
-margin: 0 0 0 18px;
- 
-`
-
-const InfoRecord = styled.p`
-    width: 146px;
-font-family: "Lexend Deca", sans-serif;
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 16px;
-color: #666666;
-margin: 0 0 0 18px;
-
-`
-
-const ConteinterInfos = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 18px 0 0 0;
-`
-
-const Botao = styled.button`
-    width: 69px;
-height: 69px;
-background: #EBEBEB;
-border: 1px solid #E7E7E7;
-border-radius: 5px;
-border: none;
-position: absolute;
-    top: 10px;
-    right: 20px;
-`
-
-const StyledIcon = styled(IonIcon)`
-
-color: #FFFFFF;
-font-size: 54px;
-`
 const FooterHabitos = styled.footer`
 width: 100%;
   height: 70px;
@@ -222,8 +137,4 @@ color: #52B6FF;
 border: none;
 background-color: #FFFFFF;  
 `  
-
-
-
-
-export default Hoje;
+export default Historico;

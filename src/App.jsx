@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Cadastro from './paginas/cadastro'
 import Habitos from './paginas/habitos'
+import Historico from './paginas/historico'
 import Hoje from './paginas/hoje'
 import Login from './paginas/login'
 
@@ -12,7 +13,8 @@ function App() {
     {/* <Login /> */}
     {/* <Cadastro /> */}
     {/* <Habitos /> */}
-    <Hoje />
+    {/* <Hoje /> */}
+    <Historico />
     </>
   )
 }
