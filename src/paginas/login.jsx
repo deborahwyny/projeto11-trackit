@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Logo from "../componentes/logo";
 
 function Login({logoImage}) {
   return (
     <ConteinerLogin>
+      <Logo />
       {/* <Titulo>TrackIt</Titulo> */}
-      <img src={logoImage} alt="logo trackit"/>
       <ConteinerInputs>
         <InputEmail type="email" placeholder="email"></InputEmail>
         <InputSenha type="password" placeholder="senha" />
         <BotaoLogin>entrar</BotaoLogin>
       </ConteinerInputs>
-      <LinkCadastrese>Não tem uma conta? Cadastre-se!</LinkCadastrese>
+      <Link to="/cadastro"><LinkCadastrese >Não tem uma conta? Cadastre-se!</LinkCadastrese></Link>
     </ConteinerLogin>
   );
 }

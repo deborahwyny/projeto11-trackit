@@ -1,18 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Logo from "../componentes/logo";
 
 function Cadastro() {
+
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navegate = useNavigate();
+
+  function cadastrado(e){
+    e.preventDefault();
+
+    console.log(email);
+    console.log(name);
+    console.log(image);
+    console.log(password);
+
+    const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up';
+
+    const novoCadastro = {email,name,image,password};
+
+   const promisse = axios.post(URL, novoCadastro);
+
+   promisse.then (resposta=>{
+    console.log(resposta)
+    alert('Você foi cadastrado com sucesso!')
+    navegate("/")
+   } );
+
+   promisse.catch (erro => alert(erro.response.data.message));
+
+  }
+
+
   return (
     <PageContainer>
-      <Titulo>TrackIt</Titulo>
-      <ConteinerInputs>
-        <InputEmail type="email" placeholder="email"></InputEmail>
-        <InputSenha type="password" placeholder="senha" />
-        <InputNome type="text" placeholder="nome" />
-        <InputFoto type="url" placeholder="foto" />
-        <BotaoCadastrar>Cadastrar</BotaoCadastrar>
+       <Logo />
+      {/* <Titulo>TrackIt</Titulo> */}
+      <ConteinerInputs onSubmit={cadastrado}>
+        <InputEmail type="email" required value={email} placeholder="email" onChange={(e)=> setEmail(e.target.value)}></InputEmail>
+        <InputSenha type="password" required value={password} placeholder="senha" onChange={(e) => setPassword(e.target.value)}/>
+        <InputNome type="text" required value={name} placeholder="nome" onChange={(e)=> setName(e.target.value)}/>
+        <InputFoto type="url" required value={image} placeholder="foto" onChange={(e)=> setImage(e.target.value)}/>
+        <BotaoCadastrar type="submit">Cadastrar</BotaoCadastrar>
       </ConteinerInputs>
-      <LinkLogin>Já tem uma conta? Faça login!</LinkLogin>
+      <Link to="/"> <LinkLogin>Já tem uma conta? Faça login!</LinkLogin></Link>
     </PageContainer>
   );
 }
@@ -25,18 +62,18 @@ const PageContainer = styled.div`
   height: 100vh;
 `;
 
-const Titulo = styled.h1`
-  width: 180px;
-  height: 86px;
-  font-family: "Playball", cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 68px;
-  line-height: 86px;
-  text-align: center;
-  color: #126ba5;
-  margin-bottom: 32px;
-`;
+// const Titulo = styled.h1`
+//   width: 180px;
+//   height: 86px;
+//   font-family: "Playball", cursive;
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 68px;
+//   line-height: 86px;
+//   text-align: center;
+//   color: #126ba5;
+//   margin-bottom: 32px;
+// `;
 const ConteinerInputs = styled.form`
   display: flex;
   justify-content: center;

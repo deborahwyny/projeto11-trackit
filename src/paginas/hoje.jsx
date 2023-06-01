@@ -12,7 +12,6 @@ function Hoje() {
       <Header />
       <TituloHoje>Segunda, 17/05</TituloHoje>
       <SubTitulo>Nenhum hábito concluído ainda</SubTitulo>
-
       <Cardinfos />
       <Footer />
     </Conteiner>
