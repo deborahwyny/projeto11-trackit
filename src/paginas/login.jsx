@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-function Login() {
+function Login({logoImage}) {
   return (
     <ConteinerLogin>
-      <Titulo>TrackIt</Titulo>
-      <img></img>
+      {/* <Titulo>TrackIt</Titulo> */}
+      <img src={logoImage} alt="logo trackit"/>
       <ConteinerInputs>
         <InputEmail type="email" placeholder="email"></InputEmail>
         <InputSenha type="password" placeholder="senha" />
@@ -24,18 +24,18 @@ const ConteinerLogin = styled.div`
   height: 100vh; 
 `;
 
-const Titulo = styled.h1`
-  width: 180px;
-  height: 86.23px;
-  font-family: "Playball", cursive;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 68.982px;
-  line-height: 86px;
-  text-align: center;
-  color: #126ba5;
-  margin-bottom: 32px
-`;
+// const Titulo = styled.h1`
+//   width: 180px;
+//   height: 86.23px;
+//   font-family: "Playball", cursive;
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 68.982px;
+//   line-height: 86px;
+//   text-align: center;
+//   color: #126ba5;
+//   margin-bottom: 32px
+// `;
 const ConteinerInputs = styled.form`
   display: flex;
   justify-content: center;
