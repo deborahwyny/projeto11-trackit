@@ -1,27 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { IonIcon } from "@ionic/react";
 import { trashOutline } from "ionicons/icons";
+import axios from "axios";
 
 function CardCadastrados(){
+
+    const [itens, setItens] = useState([]);
+    useEffect ( () => {
+
+        const URL = 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits';
+        const config ={
+            headers: {
+                Authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTM5OCwiaWF0IjoxNjg1NzM4Nzg1fQ.KvGK0g4nJwvQ_6RknkxyVfE-xVfgFXaHEoxOL8H2iAk'
+            }
+        }
+
+        const promise = axios.get(URL, config);
+
+        promise.then(resposta => console.log(resposta));
+        promise.catch(erro => console.log(erro.responses))
+
+    },[])
+
+    function clicou(){
+        console.log("Botão de cadastro clicado!")
+    }
+  
+
     return (
 
-        <ConteinerCadastrados>
-
-        <HabitosCadastrados>
-          <TituloCadastrado>Ler 1 capítulo de livro</TituloCadastrado>
-          <StyledIcon icon={trashOutline} />
-          <ConteinerBotao>
-          <BotaoCadastrados>D</BotaoCadastrados>
-          <BotaoCadastrados>S</BotaoCadastrados>
-          <BotaoCadastrados>T</BotaoCadastrados>
-          <BotaoCadastrados>Q</BotaoCadastrados>
-          <BotaoCadastrados>Q</BotaoCadastrados>
-          <BotaoCadastrados>S</BotaoCadastrados>
-          <BotaoCadastrados>S</BotaoCadastrados>
-          </ConteinerBotao>
-        </HabitosCadastrados>
-        </ConteinerCadastrados>
+       
+        <>
+        {itens.map((item, index) => (
+          <ConteinerCadastrados key={index}>
+            <HabitosCadastrados>
+              <TituloCadastrado>Ler 1 capítulo de livro</TituloCadastrado>
+              <StyledIcon icon={trashOutline} />
+              <ConteinerBotao >
+                <BotaoCadastrados onClick={clicou}>D</BotaoCadastrados>
+                <BotaoCadastrados onClick={clicou}>S</BotaoCadastrados>
+                <BotaoCadastrados onClick={clicou}>T</BotaoCadastrados>
+                <BotaoCadastrados onClick={clicou}>Q</BotaoCadastrados>
+                <BotaoCadastrados onClick={clicou}>Q</BotaoCadastrados>
+                <BotaoCadastrados onClick={clicou}>S</BotaoCadastrados>
+                <BotaoCadastrados onClick={clicou}>S</BotaoCadastrados>
+              </ConteinerBotao>
+            </HabitosCadastrados>
+          </ConteinerCadastrados>
+        ))}
+      </>
+            
+          
+       
 
     )
 }
