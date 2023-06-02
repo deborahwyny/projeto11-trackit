@@ -3,6 +3,10 @@ import styled from "styled-components";
 import Header from "../componentes/header";
 import Footer from "../componentes/footer";
 import CardCadastro from "../componentes/cardCadastro";
+import CardCadastrados from "../componentes/cardCadastrados";
+// import { IonIcon } from "@ionic/react";
+// import { trashOutline } from "@ionic/react";
+
 
 function Habitos() {
   return (
@@ -17,13 +21,16 @@ function Habitos() {
         <AdicioneHabitos>
           Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
           começar a trackear!
-        </AdicioneHabitos>
+          </AdicioneHabitos>
+
+        <CardCadastrados />
       </Conteinercadastro>
 
      <Footer />
     </Conteiner>
   );
 }
+
 
 const Conteiner = styled.div`
      background-color: #E5E5E5;

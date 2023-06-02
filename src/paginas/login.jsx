@@ -1,17 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../componentes/logo";
+import axios from "axios";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-function Login({logoImage}) {
+
+function Login() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navegate = useNavigate();
+  // const [loading, setLoading] = useState(false);
+
+
+  function login(e){
+    e.preventDefault();
+    // setLoading(true);
+
+    const URL= 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
+
+    const novoLogin = { email, password };
+
+    const promise = axios.post(URL, novoLogin);
+
+    promise.then (resposta => {console.log(resposta.data)
+    navegate('/habitos')
+    // setLoading(false)
+  });
+    promise.catch(erro => {console.log(erro.response)
+      });
+  };
+
   return (
     <ConteinerLogin>
       <Logo />
-      {/* <Titulo>TrackIt</Titulo> */}
       <ConteinerInputs>
-        <InputEmail type="email" placeholder="email"></InputEmail>
-        <InputSenha type="password" placeholder="senha" />
-        <BotaoLogin>entrar</BotaoLogin>
+        <InputEmail type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="email"></InputEmail>
+        <InputSenha type="password" value={password} onChange={(e)=> setPassword (e.target.value)} placeholder="senha" />
+        <BotaoLogin onClick={login}>entrar</BotaoLogin>
       </ConteinerInputs>
       <Link to="/cadastro"><LinkCadastrese >Não tem uma conta? Cadastre-se!</LinkCadastrese></Link>
     </ConteinerLogin>
@@ -26,18 +53,6 @@ const ConteinerLogin = styled.div`
   height: 100vh; 
 `;
 
-// const Titulo = styled.h1`
-//   width: 180px;
-//   height: 86.23px;
-//   font-family: "Playball", cursive;
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 68.982px;
-//   line-height: 86px;
-//   text-align: center;
-//   color: #126ba5;
-//   margin-bottom: 32px
-// `;
 const ConteinerInputs = styled.form`
   display: flex;
   justify-content: center;
@@ -90,6 +105,12 @@ const BotaoLogin = styled.button`
   line-height: 26px;
   text-align: center;
   color: #ffffff;
+  /* {loading ? (
+    <Loader type="ThreeDots" color="#FFFFFF" height={16} width={16} />
+  ) : (
+    "entrar"
+  )} */
+  
 `;
 const LinkCadastrese = styled.p`
   width: 232px;

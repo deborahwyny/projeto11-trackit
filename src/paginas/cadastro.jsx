@@ -41,7 +41,6 @@ function Cadastro() {
   return (
     <PageContainer>
        <Logo />
-      {/* <Titulo>TrackIt</Titulo> */}
       <ConteinerInputs onSubmit={cadastrado}>
         <InputEmail type="email" required value={email} placeholder="email" onChange={(e)=> setEmail(e.target.value)}></InputEmail>
         <InputSenha type="password" required value={password} placeholder="senha" onChange={(e) => setPassword(e.target.value)}/>
@@ -62,18 +61,6 @@ const PageContainer = styled.div`
   height: 100vh;
 `;
 
-// const Titulo = styled.h1`
-//   width: 180px;
-//   height: 86px;
-//   font-family: "Playball", cursive;
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 68px;
-//   line-height: 86px;
-//   text-align: center;
-//   color: #126ba5;
-//   margin-bottom: 32px;
-// `;
 const ConteinerInputs = styled.form`
   display: flex;
   justify-content: center;
