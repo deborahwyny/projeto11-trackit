@@ -1,12 +1,15 @@
+import { link } from "ionicons/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
 
 function Footer(){
     return (
         <FooterConteiner> 
-        <BotaoHabitos>Hábitos</BotaoHabitos>
-        <BotaoHoje>Hoje</BotaoHoje>
-        <BotaoHistorico>Histórico</BotaoHistorico>
+        <Link to="/Habitos"> <BotaoHabitos>Hábitos</BotaoHabitos></Link>
+        <Link to="/Hoje"><BotaoHoje>Hoje</BotaoHoje></Link> 
+        <Link to="/historico"><BotaoHistorico>Histórico</BotaoHistorico></Link>
       </FooterConteiner>
     )
 }
