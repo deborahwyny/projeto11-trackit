@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { IonIcon } from "@ionic/react";
 import { trashOutline } from "ionicons/icons";
 import axios from "axios";
+import { UserContext } from "../context/UserContext";
+
+
 
 function CardCadastrados(){
+  const {usuario} = useContext(UserContext);
+
 
     const [itens, setItens] = useState([]);
     useEffect ( () => {
@@ -18,10 +23,12 @@ function CardCadastrados(){
 
         const promise = axios.get(URL, config);
 
-        promise.then(resposta => console.log(resposta));
+        promise.then(resposta => {console.log(resposta)
+          setItens(resposta.data)
+      });
         promise.catch(erro => console.log(erro.responses))
 
-    },[])
+    },[usuario.token]);
 
     function clicou(){
         console.log("Botão de cadastro clicado!")
@@ -35,7 +42,7 @@ function CardCadastrados(){
         {itens.map((item, index) => (
           <ConteinerCadastrados key={index}>
             <HabitosCadastrados>
-              <TituloCadastrado>Ler 1 capítulo de livro</TituloCadastrado>
+              <TituloCadastrado>{item.name}</TituloCadastrado>
               <StyledIcon icon={trashOutline} />
               <ConteinerBotao >
                 <BotaoCadastrados onClick={clicou}>D</BotaoCadastrados>

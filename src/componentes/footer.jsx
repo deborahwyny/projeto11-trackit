@@ -14,7 +14,7 @@ function Footer(){
         <FooterConteiner> 
         <Link to="/Habitos"> <BotaoHabitos>Hábitos</BotaoHabitos></Link>
         <Link to="/Hoje"><BotaoHoje><CircularProgressbar value={progresso} text={"Hoje"} styles={buildStyles({
-          // trailColor: "transparent",
+          trailColor: "transparent",
           textColor:"#FFFFFF",
           backgroundColor:"#52B6FF",
           pathColor:"#FFFFFF"
