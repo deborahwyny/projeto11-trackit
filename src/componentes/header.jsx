@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-function Header({}){
+import { UserContext } from "../context/UserContext";
+
+function Header(){
+
+  const {usuario} = useContext(UserContext);
     return(
      
          <HeaderContainer>
           <Link to="/"><Titulo>TrackIt</Titulo></Link> 
           <IconUser
-            src="https://64.media.tumblr.com/6566e1dfdd380b1e1bea4d7da2e38821/fc1cee0b79687753-8d/s1280x1920/84bad96a2f5b8feeb3254f17413aadf5b334e11d.jpg"
-            alt=""
+            src={usuario.image}
+            alt="imagem do usuario"
           />
         </HeaderContainer>
         

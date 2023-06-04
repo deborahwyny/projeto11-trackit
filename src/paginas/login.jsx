@@ -4,7 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../componentes/logo";
 import axios from "axios";
 import { UserContext } from "../context/UserContext";
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import Loader from "react-loader-spinner";
+// import { ThreeDots } from "react-loader-spinner";
+
+
 
 
 function Login() {
@@ -12,13 +15,13 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navegate = useNavigate();
-  // const [loading, setLoading] = useState(false);
+  // const [carregando, setCarregando] = useState(false)
   const {usuario, setUsuario} = useContext(UserContext);
 
 
   function login(e){
     e.preventDefault();
-    // setLoading(true);
+    // setCarregando(true)
 
     const URL= 'https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login';
 
@@ -27,12 +30,14 @@ function Login() {
     const promise = axios.post(URL, novoLogin);
 
     promise.then (resposta => {console.log(resposta.data)
+      // setCarregando(false)
     const {id,nome,token,image} = resposta.data
     setUsuario({id, nome, token, image})
     navegate('/habitos')
-    // setLoading(false)
-  });
+    });
     promise.catch(erro => {console.log(erro.response)
+      // setCarregando(false)
+
       });
   };
 
@@ -40,9 +45,9 @@ function Login() {
     <ConteinerLogin>
       <Logo />
       <ConteinerInputs>
-        <InputEmail type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="email"></InputEmail>
-        <InputSenha type="password" value={password} onChange={(e)=> setPassword (e.target.value)} placeholder="senha" />
-        <BotaoLogin onClick={login}>entrar</BotaoLogin>
+        <InputEmail  type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="email"></InputEmail>
+        <InputSenha  type="password" value={password} onChange={(e)=> setPassword (e.target.value)} placeholder="senha" />
+        <BotaoLogin  onClick={login}>Entrar</BotaoLogin>
       </ConteinerInputs>
       <Link to="/cadastro"><LinkCadastrese >Não tem uma conta? Cadastre-se!</LinkCadastrese></Link>
     </ConteinerLogin>

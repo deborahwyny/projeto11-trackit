@@ -1,14 +1,26 @@
 import { link } from "ionicons/icons";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import { ProgressoContext } from "../context/ProgressoContext";
 
 
 function Footer(){
+
+  const {progresso, setProgresso} = useContext(ProgressoContext)
     return (
         <FooterConteiner> 
         <Link to="/Habitos"> <BotaoHabitos>Hábitos</BotaoHabitos></Link>
-        <Link to="/Hoje"><BotaoHoje>Hoje</BotaoHoje></Link> 
+        <Link to="/Hoje"><BotaoHoje><CircularProgressbar value={progresso} text={"Hoje"} styles={buildStyles({
+          // trailColor: "transparent",
+          textColor:"#FFFFFF",
+          backgroundColor:"#52B6FF",
+          pathColor:"#FFFFFF"
+          
+          
+        })}/></BotaoHoje></Link> 
         <Link to="/historico"><BotaoHistorico>Histórico</BotaoHistorico></Link>
       </FooterConteiner>
     )
