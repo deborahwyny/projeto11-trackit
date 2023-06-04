@@ -5,11 +5,15 @@ import Historico from './paginas/historico'
 import Hoje from './paginas/hoje'
 import Login from './paginas/login'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { UserContext } from './context/UserContext'
 
 function App() {
 
+  const [usuario, setUsuario] = useState({});
+
   return (
     <BrowserRouter>
+    <UserContext.Provider value={{usuario, setUsuario}}>
     <Routes>
       <Route path="/" element={<Login />}/>
       <Route path="/cadastro" element={<Cadastro /> }/>
@@ -17,6 +21,7 @@ function App() {
       <Route path="/hoje" element={<Hoje /> }/>
       <Route path="/historico"element={<Historico />}/>
     </Routes>
+    </UserContext.Provider>
     </BrowserRouter>
   )
 }

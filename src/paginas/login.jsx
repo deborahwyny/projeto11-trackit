@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../componentes/logo";
 import axios from "axios";
+import { UserContext } from "../context/UserContext";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
@@ -12,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const navegate = useNavigate();
   // const [loading, setLoading] = useState(false);
+  const {usuario, setUsuario} = useContext(UserContext);
 
 
   function login(e){
@@ -25,6 +27,8 @@ function Login() {
     const promise = axios.post(URL, novoLogin);
 
     promise.then (resposta => {console.log(resposta.data)
+    const {id,nome,token,image} = resposta.data
+    setUsuario({id, nome, token, image})
     navegate('/habitos')
     // setLoading(false)
   });
